@@ -1,0 +1,125 @@
+<!-- HIV@30 Graph project
+* Internews-KE
+* @auremoser -->
+<!DOCTYPE html>
+<meta charset="utf-8">
+<title>Chambua Petri Project</title>
+    <meta charset="utf-8">
+    <link rel="shortcut icon" href="favicon.ico" >
+    <script type="text/javascript" src="libs/d3.v3.min.js"></script>
+<style>
+  body {
+    background-color: #F9B69E;
+    /*background-image: url("assets/HIV-1_Trans-Electron-Micrograph_AIDS.jpg");*/
+  }
+  /*colors:
+  nodes:#d7191c,#ff6a18,#ffa300
+  background:#fc9272,#fb6a4a,#ef3b2c,#cb181d, #99000d
+  */
+  .node {
+    cursor: pointer;
+    font-size: 12px;
+  }
+
+  .node:hover {
+    stroke: #636363;
+    stroke-width: 1.5px;
+  }
+
+  .node--leaf {
+    fill: #f7f7f7;
+  }
+
+  .label {
+    font: 16px "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: #252525;
+    text-anchor: middle;
+    text-shadow: 0 1px 0 #d9d9d9, 1px 0 0 #d9d9d9, -1px 0 0 #d9d9d9, 0 -1px 0 #d9d9d9;
+  }
+
+  .label,
+  .node--root,
+  .node--leaf {
+    pointer-events: none;
+  }
+
+
+  .people {
+      fill: #cd0032;
+      background: #cd0032;
+      text-align: center;
+      color: #252525;
+      text-shadow: 0 1px 0 #d9d9d9, 1px 0 0 #d9d9d9, -1px 0 0 #d9d9d9, 0 -1px 0 #d9d9d9;
+  }
+
+  .places {
+      fill: #FF6A18;
+      background: #FF6A18;
+      text-align: center;
+      color: #252525;
+      text-shadow: 0 1px 0 #d9d9d9, 1px 0 0 #d9d9d9, -1px 0 0 #d9d9d9, 0 -1px 0 #d9d9d9;
+  }
+  .organizations {
+      fill: #ffa300;
+      background: #ffa300;
+      text-align: center;
+      color: #252525;
+      text-shadow: 0 1px 0 #d9d9d9, 1px 0 0 #d9d9d9, -1px 0 0 #d9d9d9, 0 -1px 0 #d9d9d9;
+  }
+
+  #key {
+    position: absolute;
+    padding: 5px;
+    z-index: 99999;
+    width: 300px;
+    height: 740px;
+    right: 100px;
+    top: 30px;
+    background-color: rgba(0,0,0,0.1);
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: #252525;
+    /*pointer-events: none;*/
+  }
+
+  #article-date {
+    margin: 0 0;
+  }
+
+  #terms-people, #terms-places, #terms-organizations {
+    margin: 0 0;
+    max-height: 110px;
+    overflow-y: scroll;
+    font: 12px "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: #252525;
+  }
+
+  #key > p {
+    padding: 5px;
+    margin: 0 0;
+    font: 14px "Helvetica Neue", Helvetica, Arial, sans-serif;
+    text-align: center;
+  }
+
+  #key > h1, h2 {
+    padding: 10px;
+    margin: 0 0;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    text-align: center;
+    text-shadow: 0 1px 0 #d9d9d9, 1px 0 0 #d9d9d9, -1px 0 0 #d9d9d9, 0 -1px 0 #d9d9d9;
+  }
+</style>
+
+<body>
+<script src="http://d3js.org/d3.v3.min.js"></script>
+  <div id="key">
+    <h1>30 Years of HIV: Petri Key</h1>
+    <p>Click on bubbles at left to display the <a href="http://www.nation.co.ke/" target="_blank">Daily Nation</a>  article terms for each year. Scroll beneath each header in this key to explore the terms.</p>
+    <h2 id="article-date"></h2>
+      <h3 class="people">People</h3>
+        <div id="terms-people"></div>
+      <h3 class="places">Places</h3>
+        <div id="terms-places"></div>
+      <h3 class="organizations">Organizations</h3>
+        <div id="terms-organizations"></div>
+  </div>
+<script src="js/pack-all.js"></script>
