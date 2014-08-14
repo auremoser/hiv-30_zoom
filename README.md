@@ -8,7 +8,7 @@ Internews-Kenya's retrospective on HIV in East African media considered equally 
 
 To do this, Internews pulled and processed articles from the Daily Nation, a Kenyan publication with 30 years of reporting history on the development of the AIDS virus in East Africa. We then extracted people, places, and organizations mentioned therein, and clustered these in a visualization. Read below for descriptions of our methodology and data visualization decisions.
 
-![HIV Virus](https://raw.githubusercontent.com/auremoser/hiv-30_zoom/master/assets/virus-banner.png)
+![HIV Virus](https://raw.githubusercontent.com/auremoser/hiv-30_zoom/master/assets/diagram-virus.png)
 
 ###Methodology
 Analyzing the articles involved a multi-step process roughly divided into data collection, data processing, and data visualization workflows.
