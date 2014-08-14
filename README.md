@@ -1,7 +1,7 @@
 
 ##HIV-30 Zoom Visualization
 
-prototype for internews' hiv@30 sentiment analysis visualization
+[project] 30 years of HIV sentiment analysis visualization with Chambua
 
 ###Overview
 Internews-Kenya's retrospective on HIV in East African media considered equally the news content as well as the language associated with that coverage. While our approach to this project studied the general tag trends as seen in the "Words Through Time" section, we also considered the proper-noun taxonomy associated with 30 years of media coverage on HIV. The motivation for this approach was to track the conversation according to the associated persons, locations (international and domestic), and organizations-of-interest who were associated with the conversation around HIV as it grew over time.
