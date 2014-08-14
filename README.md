@@ -8,19 +8,26 @@ Internews-Kenya's retrospective on HIV in East African media considered equally 
 
 To do this, Internews pulled and processed articles from the Daily Nation, a Kenyan publication with 30 years of reporting history on the development of the AIDS virus in East Africa. We then extracted people, places, and organizations mentioned therein, and clustered these in a visualization. Read below for descriptions of our methodology and data visualization decisions.
 
+![HIV Virus](https://raw.githubusercontent.com/auremoser/hiv-30_zoom/master/assets/virus-banner.png)
+
 ###Methodology
 Analyzing the articles involved a multi-step process roughly divided into data collection, data processing, and data visualization workflows.
 
 ####Data Collection
 Journalists at Internews Kenya tirelessly scoured the Daily Nation archives online and off to scan, caption, process in Overview and export articles about HIV and AIDS over the course of several weeks. They then exported these files with default names as .docx files and passed them to developers on the team to handle the post-processing.
+
 In tandem, the team developers brainstormed ways to visualize the vocabulary from these articles.
+
 * [Brainstorming Notes](https://github.com/internews-ke/hiv-30/blob/master/Sentiment_Analysis/notes/notes.md)
 
 ####Data Processing
 Data processing to extract proper-noun entities was designed to used [Chambua](https://github.com/ushahidi/Chambua), an Ushahidi open-source project that curls text files to extract people, place, and organization terms and output a json object with these entities.
+
 The project works cleanly for one file, we needed it to work for a batch of files, organized by year. To use Chambua in this way, we converted the files from .docx to .txt, wrapped them in a text object using `wrap_json.py`, and wrote Python scripts to run chambua over each article in a directory (named by year) and output a comparable people, place, and organization object on a per-article basis using `send_json.py`.
 
 Once the terms were extracted, they needed to be cleaned and reformated to suit a flare structure for a D3 visualization. For this, we developed a node process to run through the chambua articles in each year's directory, combine them all into one csv file and then clean the terms in Open Refine. Refine's macros were useful in eliminating unicode errors, miss- or similar- spellings and invalid terms. We then output the clean csv and processed it to map to a json file with a D3-appropriate structure.
+
+![Cleaning Process](https://raw.githubusercontent.com/auremoser/hiv-30_zoom/master/assets/zm-data-cleaning.jpg)
 
 The documentation for our cleaning process can be found in the following resoures:
 
@@ -32,6 +39,8 @@ The documentation for our cleaning process can be found in the following resoure
 
 ####Data Visualization
 Data visualization of these terms was originally designed as a force-directed node-edge map, where the shape and color of the visualization was meant to represent microscopic photographs of the HIV-Virus, and the external notes would represent glycoproteins on the periphery of each virus. From a user-experience perspective however, this was tough to explore and unintuitive, so we pivoted to representing the people, places, and institutions as ameobic sub-clusters in a larger 'petri dish' per year.
+
+![Sample Petri, for 1980s](https://raw.githubusercontent.com/auremoser/hiv-30_zoom/master/assets/1980s-pack.png)
 
 The result was the following small multiples representation, [available live here](http://auremoser.github.io/hiv-30_cluster/), where red: people, orange: places, and yellow: institutions and the size of each blog is determined by the number of terms within it.
 
@@ -65,5 +74,4 @@ For more on this project, please consult the links below:
 * Information on the data cleaning scripts can be found in these python and node folders: [Python pre-process](https://github.com/internews-ke/hiv-30/tree/master/Sentiment_Analysis/python) | [Node batch process](https://github.com/internews-ke/hiv-30/tree/master/Sentiment_Analysis/node)
 * A [cluster visualization](http://auremoser.github.io/hiv-30_cluster/) to view all petris separately
 * A [zoom visualization](http://auremoser.github.io/hiv-30_zoom/) to view the terms in connection
-
-See also this [static circle packing](/mbostock/4063530) example, for the template
+* To learn more about zoomable circle packs in D3 see also this [static circle packing](/mbostock/4063530) example, for the template
