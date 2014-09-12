@@ -2,10 +2,7 @@ var margin = 20,
     diameter = 800;
 
 var color = d3.scale.linear()
-    // .domain([-1, 5])
     .range(["#fc9272", "#fb6a4a", "#ef3b2c", "#cb181d", "#99000d"])
-    // .range(["hsl(152,80%,80%)", "hsl(228,30%,40%)"])
-    // .range(["#98abc5", "#8a89a6", "#7b6888", "#6b486b", "#a05d56", "#d0743c", "#ff8c00"]);
     .interpolate(d3.interpolateHcl);
 
 var pack = d3.layout.pack()
@@ -89,7 +86,7 @@ function showTerms(d) {
 
   d3.select('#article-date').text(d.name)
 
-  d3.selectAll('#terms .term').remove()
+  d3.selectAll('.term').remove()
 
   d.children.forEach(function(child) {
     d3.select('#terms-' + child.name)
